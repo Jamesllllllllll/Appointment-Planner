@@ -4,9 +4,10 @@ import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
 export const ContactsPage = (props) => {
-  const [contactName, setContactName] = useState("");
-  const [contactPhone, setContactPhone] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
+  const [ contactName, setContactName ] = useState("");
+  const [ contactPhone, setContactPhone ] = useState("");
+  const [ contactEmail, setContactEmail ] = useState("");
+  const [ duplicateAlert, setDuplicateAlert ] = useState("");
 
   const { contacts, addContact } = props;
   /*
@@ -15,11 +16,7 @@ export const ContactsPage = (props) => {
   */
 
   const handleNameChange = (e) => {
-    let newName = e.target.value;
-    /* if (contacts.find(newName)) {
-      console.log("Name is a duplicate");
-    } */
-    setContactName(newName);
+    setContactName(e.target.value);
   };
 
   const handlePhoneChange = (e) => {
@@ -37,9 +34,10 @@ export const ContactsPage = (props) => {
     return result;
   }
 
+  // Add to contacts list
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add to contacts list
     const newContact = {
       contactId: generateId(),
       name: contactName,
@@ -56,6 +54,18 @@ export const ContactsPage = (props) => {
     if the contact name is not a duplicate
     */
 
+  useEffect(() => {
+    for (let i = 0; i < contacts.length; i++) {
+      if (contactName === contacts[i].name) {
+        setDuplicateAlert('red');
+      } else {
+        setDuplicateAlert('black');
+      }
+      /* return () => {
+        setDuplicateAlert('black');
+      } */
+    }
+  }, [contactName, contacts]);
   /*
   Using hooks, check for contact name in the 
   contacts array variable in props
@@ -74,6 +84,7 @@ export const ContactsPage = (props) => {
             type="text"
             aria-label="Your name"
             placeholder="Your name"
+            style={{ color: duplicateAlert }}
           />
           <input
             value={contactPhone}
