@@ -14,40 +14,11 @@ export const ContactsPage = (props) => {
   contact info and duplicate check
   */
 
-  let nextId = 0;
-  function generateId() {
-    const result = nextId;
-    nextId += 1;
-    return result;
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newName = e.target.value;
-    if (!contacts.find(newName)) {
-      // Add to contacts list
-      const newContact = {
-        id: generateId(),
-        name: contactName,
-        phone: contactPhone,
-        email: contactEmail,
-      };
-      addContact(newContact);
-      setContactName(""); // can I set all on one line?
-      setContactPhone("");
-      setContactEmail("");
-    }
-    /*
-    Add contact info and clear data
-    if the contact name is not a duplicate
-    */
-  };
-
   const handleNameChange = (e) => {
     let newName = e.target.value;
-    if (contacts.find(newName)) {
+    /* if (contacts.find(newName)) {
       console.log("Name is a duplicate");
-    }
+    } */
     setContactName(newName);
   };
 
@@ -58,6 +29,32 @@ export const ContactsPage = (props) => {
   const handleEmailChange = (e) => {
     setContactEmail(e.target.value);
   };
+
+  let nextId = 3;
+  function generateId() {
+    const result = nextId;
+    nextId += 1;
+    return result;
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add to contacts list
+    const newContact = {
+      contactId: generateId(),
+      name: contactName,
+      phone: contactPhone,
+      email: contactEmail,
+    };
+    addContact(newContact);
+    setContactName(""); // can I set all on one line?
+    setContactPhone("");
+    setContactEmail("");
+  };
+  /*
+    Add contact info and clear data
+    if the contact name is not a duplicate
+    */
 
   /*
   Using hooks, check for contact name in the 
@@ -81,7 +78,7 @@ export const ContactsPage = (props) => {
           <input
             value={contactPhone}
             onChange={handlePhoneChange}
-            type="number"
+            type="tel"
             aria-label="Your phone number"
             placeholder="Your phone number"
           />
@@ -92,6 +89,7 @@ export const ContactsPage = (props) => {
             aria-label="Your email"
             placeholder="Your email"
           />
+          <input type="submit" value="Add Contact" />
         </form>
       </section>
       <hr />
