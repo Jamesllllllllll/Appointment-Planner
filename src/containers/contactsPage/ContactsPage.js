@@ -14,13 +14,20 @@ export const ContactsPage = (props) => {
   contact info and duplicate check
   */
 
+  let nextId = 0;
+  function generateId() {
+    const result = nextId;
+    nextId += 1;
+    return result;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let newName = e.target.value;
     if (!contacts.find(newName)) {
       // Add to contacts list
       const newContact = {
-        /* id: --create generateId() */
+        id: generateId(),
         name: contactName,
         phone: contactPhone,
         email: contactEmail,
@@ -28,7 +35,7 @@ export const ContactsPage = (props) => {
       addContact(newContact);
       setContactName(""); // can I set all on one line?
       setContactPhone("");
-      setContactPhone("");
+      setContactEmail("");
     }
     /*
     Add contact info and clear data
