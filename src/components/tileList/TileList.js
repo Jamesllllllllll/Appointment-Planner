@@ -1,9 +1,10 @@
 import React from "react";
 
-export const TileList = () => {
+export const TileList = (props) => {
+  const { contactName, contactPhone, contactEmail } = props;
   return (
-    <div>
-      
+    <div style={{marginBottom:'1rem'}}>
+      {contactName}<br />{contactPhone}<br />{contactEmail}
     </div>
   );
 };

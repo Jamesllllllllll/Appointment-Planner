@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = () => {
+
+export const ContactsPage = (props) => {
+  const { contacts, addContact } = props;
   /*
   Define state variables for 
   contact info and duplicate check
@@ -30,6 +32,11 @@ export const ContactsPage = () => {
       <hr />
       <section>
         <h2>Contacts</h2>
+        <ul>
+          {contacts.map((contact) => (
+            <TileList key={contact.id} contactName={contact.name} contactPhone={contact.phone} contactEmail={contact.email} />
+          ))}
+        </ul>
       </section>
     </div>
   );

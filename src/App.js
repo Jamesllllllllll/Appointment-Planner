@@ -11,11 +11,13 @@ function App() {
       name: 'Joe Schmoe',
       phone: '416-580-9955',
       email: 'joe.schmoe@gmail.com',
+      id: 1,
     },
     {
       name: 'Aoife Weefy',
       phone: '416-670-4478',
       email: 'eefy@gmail.com',
+      id: 2,
     }
   ]);
 
@@ -33,9 +35,9 @@ function App() {
       contact: 'Joe Schmoe',
       date: 'May 1st, 2023',
       time: '11am',
-
     }
   ])
+
   /*
   Define state variables for 
   contacts and appointments 
