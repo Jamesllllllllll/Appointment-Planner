@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
+import { generateId } from "../../utils/utilities";
 
 export const ContactsPage = (props) => {
   const [ contactName, setContactName ] = useState("");
@@ -26,13 +27,6 @@ export const ContactsPage = (props) => {
   const handleEmailChange = (e) => {
     setContactEmail(e.target.value);
   };
-
-  let nextId = 3;
-  function generateId() {
-    const result = nextId;
-    nextId += 1;
-    return result;
-  }
 
   // Add to contacts list
 
@@ -60,7 +54,7 @@ export const ContactsPage = (props) => {
         setDuplicateAlert('red');
       } else {
         setDuplicateAlert('black');
-      } // This only works on newly created contacts?
+      } // Only true for 2nd last record?? use .some()
     }
   }, [contactName, contacts]);
 

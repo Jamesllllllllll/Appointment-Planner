@@ -13,13 +13,13 @@ import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 function App() {
   const [contacts, setContacts] = useState([
     {
-      contactId: 1,
+      contactId: 98,
       name: "Joe Schmoe",
       phone: "416-580-9955",
       email: "joe.schmoe@gmail.com",
     },
     {
-      contactId: 2,
+      contactId: 99,
       name: "Aoife Weefy",
       phone: "416-670-4478",
       email: "eefy@gmail.com",
