@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 import { generateId } from "../../utils/utilities";
 
 export const ContactsPage = (props) => {
-  const [ contactName, setContactName ] = useState("");
-  const [ contactPhone, setContactPhone ] = useState("");
-  const [ contactEmail, setContactEmail ] = useState("");
-  const [ duplicateAlert, setDuplicateAlert ] = useState("");
-
-  const { contacts, addContact } = props;
   /*
   Define state variables for 
   contact info and duplicate check
   */
+  const [contactName, setContactName] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [duplicateAlert, setDuplicateAlert] = useState("");
+
+  const { contacts, addContact } = props;
+
+  /* We haven't covered refs, but I found this and adding it to focus the name input after submit */
+  const inputRef = useRef(null);
 
   const handleNameChange = (e) => {
     setContactName(e.target.value);
@@ -28,7 +31,10 @@ export const ContactsPage = (props) => {
     setContactEmail(e.target.value);
   };
 
-  // Add to contacts list
+  /*
+    Add contact info and clear data
+    if the contact name is not a duplicate
+    */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,22 +45,17 @@ export const ContactsPage = (props) => {
       email: contactEmail,
     };
     addContact(newContact);
-    setContactName(""); // can I set all on one line?
+    setContactName(""); // can I set these all on one line?
     setContactPhone("");
     setContactEmail("");
+    inputRef.current.focus();
   };
-  /*
-    Add contact info and clear data
-    if the contact name is not a duplicate
-    */
 
   useEffect(() => {
-    for (let i = 0; i < contacts.length; i++) {
-      if (contactName === contacts[i].name) {
-        setDuplicateAlert('red');
-      } else {
-        setDuplicateAlert('black');
-      } // Only true for 2nd last record?? use .some()
+    if (contacts.some((contact) => contact.name === contactName)) {
+      setDuplicateAlert("red");
+    } else {
+      setDuplicateAlert("black");
     }
   }, [contactName, contacts]);
 
@@ -77,6 +78,7 @@ export const ContactsPage = (props) => {
             aria-label="Your name"
             placeholder="Your name"
             style={{ color: duplicateAlert }}
+            ref={inputRef}
           />
           <input
             value={contactPhone}
