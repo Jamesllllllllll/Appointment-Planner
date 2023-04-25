@@ -17,8 +17,8 @@ export const ContactForm = ({
       value={name}
       onChange={setName}
       type="text"
-      aria-label="Your name"
-      placeholder="Your name"
+      aria-label="Contact name"
+      placeholder="Name"
       style={{ color: duplicate }}
       ref={inputRef}
     />
@@ -27,15 +27,15 @@ export const ContactForm = ({
       onChange={setPhone}
       type="tel"
       pattern="[(]?[0-9]{3}[-)]?\s[0-9]{3}[-]?\s[0-9]{4}"
-      aria-label="Your phone number"
-      placeholder="Your phone number"
+      aria-label="Contact phone number"
+      placeholder="Phone - 126-456-7890"
     />
     <input
       value={email}
       onChange={setEmail}
       type="email"
-      aria-label="Your email"
-      placeholder="Your email"
+      aria-label="Contact email address"
+      placeholder="Email"
     />
     <input type="submit" value="Add Contact" />
   </form></>
