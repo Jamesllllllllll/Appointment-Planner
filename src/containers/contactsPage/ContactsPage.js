@@ -72,34 +72,18 @@ export const ContactsPage = (props) => {
     <div>
       <section>
         <h2>Add Contact</h2>
-        <ContactForm />
-        {/* I think add <ContactForm /> instead of form here */}
-        <form className="AddContactForm" onSubmit={handleSubmit}>
-          <input
-            value={contactName}
-            onChange={handleNameChange}
-            type="text"
-            aria-label="Your name"
-            placeholder="Your name"
-            style={{ color: duplicateAlert }}
-            ref={inputRef}
-          />
-          <input
-            value={contactPhone}
-            onChange={handlePhoneChange}
-            type="tel"
-            aria-label="Your phone number"
-            placeholder="Your phone number"
-          />
-          <input
-            value={contactEmail}
-            onChange={handleEmailChange}
-            type="email"
-            aria-label="Your email"
-            placeholder="Your email"
-          />
-          <input type="submit" value="Add Contact" />
-        </form>
+        <ContactForm
+          handleSubmit={handleSubmit}
+          name={contactName}
+          setName={handleNameChange}
+          phone={contactPhone}
+          setPhone={handlePhoneChange}
+          email={contactEmail}
+          setEmail={handleEmailChange}
+          duplicate={duplicateAlert}
+          inputRef={inputRef}
+        />
+        
       </section>
       <hr />
       <section>
