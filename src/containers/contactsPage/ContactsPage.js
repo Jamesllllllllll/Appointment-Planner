@@ -60,12 +60,10 @@ export const ContactsPage = (props) => {
         setDuplicateAlert('red');
       } else {
         setDuplicateAlert('black');
-      }
-      /* return () => {
-        setDuplicateAlert('black');
-      } */
+      } // This only works on newly created contacts?
     }
   }, [contactName, contacts]);
+
   /*
   Using hooks, check for contact name in the 
   contacts array variable in props
