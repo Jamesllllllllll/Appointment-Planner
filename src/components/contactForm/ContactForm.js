@@ -26,6 +26,7 @@ export const ContactForm = ({
       value={phone}
       onChange={setPhone}
       type="tel"
+      pattern="[(]?[0-9]{3}[-)]?\s[0-9]{3}[-]?\s[0-9]{4}"
       aria-label="Your phone number"
       placeholder="Your phone number"
     />
