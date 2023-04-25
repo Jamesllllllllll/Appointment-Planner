@@ -44,10 +44,14 @@ export const ContactsPage = (props) => {
       phone: contactPhone,
       email: contactEmail,
     };
-    addContact(newContact);
-    setContactName(""); // can I set these all on one line?
-    setContactPhone("");
-    setContactEmail("");
+    if (duplicateAlert === "black") {
+      addContact(newContact);
+      setContactName(""); // can I set these all on one line?
+      setContactPhone("");
+      setContactEmail("");
+    } else {
+      alert("This is a duplicate entry!");
+    }
     inputRef.current.focus();
   };
 
