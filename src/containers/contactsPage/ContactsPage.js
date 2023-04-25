@@ -56,7 +56,7 @@ export const ContactsPage = (props) => {
   };
 
   useEffect(() => {
-    if (contacts.some((contact) => contact.name === contactName)) {
+    if (contacts.some((contact) => contact.name.toLowerCase() === contactName.toLowerCase())) {
       setDuplicateAlert("red");
     } else {
       setDuplicateAlert("black");
