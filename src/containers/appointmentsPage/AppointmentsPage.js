@@ -57,7 +57,7 @@ export const AppointmentsPage = (props) => {
         <h2>Add Appointment</h2>
         <AppointmentForm 
             handleSubmit={handleSubmit}
-            title={title}
+            name={title}
             setTitle={handleTitleChange}
             contact={contact} 
             setContact={handleContactChange}

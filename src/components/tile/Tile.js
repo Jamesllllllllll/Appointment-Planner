@@ -5,7 +5,7 @@ export const Tile = (props) => {
 
   return (
     <div className="tile-container">
-      <p>{name}</p>
+      <p class="name">{name}</p>
       {Object.values(description).map((value,index) => <p index={index}>{value}</p>)
       }
     </div>

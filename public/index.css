@@ -94,8 +94,12 @@ select {
 .tile-container {
   margin: 1rem;
   padding: 0;
-  box-shadow: #bbb 0 0 15px;
+  box-shadow: #ccc 0 0 8px;
   border-radius: 5px;
   padding:1rem;
+}
+
+.name {
+  font-weight: bold;
 }
 
