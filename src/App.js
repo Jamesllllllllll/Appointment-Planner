@@ -11,15 +11,15 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] = useState([
+  const [ contacts, setContacts ] = useState([
     {
-      contactId: 98,
+      id: 98,
       name: "Joe Schmoe",
       phone: "416-580-9955",
       email: "joe.schmoe@gmail.com",
     },
     {
-      contactId: 99,
+      id: 99,
       name: "Aoife Weefy",
       phone: "416-670-4478",
       email: "eefy@gmail.com",
@@ -30,10 +30,10 @@ function App() {
     setContacts((prev) => [...prev, contactInfo]);
   };
 
-  const [appointments, setAppointments] = useState([
+  const [ appointments, setAppointments ] = useState([
     {
       appointmentId: 99,
-      contactId: 1,
+      id: 1,
       name: "Lunch Meeting",
       date: "May 1st, 2023",
       time: "11am",

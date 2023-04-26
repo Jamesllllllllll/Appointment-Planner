@@ -9,10 +9,10 @@ export const ContactsPage = (props) => {
   Define state variables for 
   contact info and duplicate check
   */
-  const [contactName, setContactName] = useState("");
-  const [contactPhone, setContactPhone] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [duplicateAlert, setDuplicateAlert] = useState("");
+  const [ contactName, setContactName ] = useState("");
+  const [ contactPhone, setContactPhone ] = useState("");
+  const [ contactEmail, setContactEmail ] = useState("");
+  const [ duplicateAlert, setDuplicateAlert ] = useState("");
 
   const { contacts, addContact } = props;
 
@@ -39,7 +39,7 @@ export const ContactsPage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newContact = {
-      contactId: generateId(),
+      id: generateId(),
       name: contactName,
       phone: contactPhone,
       email: contactEmail,
@@ -88,16 +88,15 @@ export const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <ul>
-          {contacts.map((contact) => (
+          <TileList tiles={contacts} />
+          {/* contacts.map((contact) => (
             <TileList
               key={contact.contactId}
               contactName={contact.name}
               contactPhone={contact.phone}
               contactEmail={contact.email}
             />
-          ))}
-        </ul>
+          )) */}
       </section>
     </div>
   );
