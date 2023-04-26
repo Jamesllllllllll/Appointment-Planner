@@ -32,9 +32,9 @@ function App() {
 
   const [ appointments, setAppointments ] = useState([
     {
-      appointmentId: 99,
       id: 1,
-      name: "Lunch Meeting",
+      title: "Lunch Meeting",
+      contact: "Aoife Weefy",
       date: "May 1st, 2023",
       time: "11am",
     },

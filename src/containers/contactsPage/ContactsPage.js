@@ -9,15 +9,12 @@ export const ContactsPage = (props) => {
   Define state variables for 
   contact info and duplicate check
   */
-  const [ contactName, setContactName ] = useState("");
-  const [ contactPhone, setContactPhone ] = useState("");
-  const [ contactEmail, setContactEmail ] = useState("");
-  const [ duplicateAlert, setDuplicateAlert ] = useState("");
+  const [contactName, setContactName] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [duplicateAlert, setDuplicateAlert] = useState("");
 
   const { contacts, addContact } = props;
-
-  /* We haven't covered refs, but I found this and adding it to focus the name input after submit */
-  const inputRef = useRef(null);
 
   const handleNameChange = (e) => {
     setContactName(e.target.value);
@@ -35,7 +32,9 @@ export const ContactsPage = (props) => {
     Add contact info and clear data
     if the contact name is not a duplicate
     */
-
+   
+  /* We haven't covered refs, but I found this and adding it to focus the name input after submit */
+  const inputRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newContact = {
@@ -56,7 +55,11 @@ export const ContactsPage = (props) => {
   };
 
   useEffect(() => {
-    if (contacts.some((contact) => contact.name.toLowerCase() === contactName.toLowerCase())) {
+    if (
+      contacts.some(
+        (contact) => contact.name.toLowerCase() === contactName.toLowerCase()
+      )
+    ) {
       setDuplicateAlert("red");
     } else {
       setDuplicateAlert("black");
@@ -83,13 +86,12 @@ export const ContactsPage = (props) => {
           duplicate={duplicateAlert}
           inputRef={inputRef}
         />
-        
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-          <TileList tiles={contacts} />
-          {/* contacts.map((contact) => (
+        <TileList tiles={contacts} />
+        {/* contacts.map((contact) => (
             <TileList
               key={contact.contactId}
               contactName={contact.name}
