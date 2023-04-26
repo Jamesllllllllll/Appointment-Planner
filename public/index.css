@@ -3,6 +3,11 @@
   font-family: "Open Sans", sans-serif;
 }
 
+p {
+  margin:0;
+  line-height: 1.45rem;
+}
+
 nav > a {
   font-style: normal;
   font-weight: normal;
@@ -81,6 +86,16 @@ select {
   font-weight: bold;
 }
 
-.tile-container {
-  margin-bottom: 20px;
+.tileList-container {
+  display:flex;
+  flex-wrap: wrap;
 }
+
+.tile-container {
+  margin: 1rem;
+  padding: 0;
+  box-shadow: #bbb 0 0 15px;
+  border-radius: 5px;
+  padding:1rem;
+}
+
